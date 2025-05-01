@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { FiChevronLeft, FiChevronRight } from 'react-icons/fi';
 
 const Menu = () => {
@@ -192,7 +192,21 @@ const Menu = () => {
   });
 
   const [direction, setDirection] = useState({});
-  const itemsPerView = 3;
+  const [itemsPerView, setItemsPerView] = useState(3);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setItemsPerView(1);
+      } else {
+        setItemsPerView(3);
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   const handleNext = (category) => {
     setDirection(prev => ({ ...prev, [category]: 1 }));
@@ -314,7 +328,7 @@ const Menu = () => {
                           handlePrev(category.title);
                         }
                       }}
-                      className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                      className={`grid gap-8 ${itemsPerView === 1 ? 'grid-cols-1' : 'grid-cols-3'}`}
                     >
                       {getVisibleItems(category.items, currentIndex[category.title] || 0).map((item, idx) => (
                         item && (
