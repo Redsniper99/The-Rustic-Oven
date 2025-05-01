@@ -73,7 +73,9 @@ const Navbar = () => {
 
         {/* Mobile Menu Button */}
         <button
-          className="md:hidden focus:outline-none text-primary"
+          className={`md:hidden focus:outline-none p-2 rounded-lg bg-white/90 hover:bg-white shadow-md transition-all duration-300 ${
+            isScrolled ? 'text-primary' : 'text-primary'
+          }`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           <svg
@@ -103,7 +105,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`md:hidden bg-white/95 shadow-lg w-full ${
+        className={`md:hidden bg-white shadow-lg w-full absolute top-full left-0 ${
           isMobileMenuOpen ? 'block' : 'hidden'
         }`}
         initial={{ opacity: 0, y: -20 }}
