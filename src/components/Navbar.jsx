@@ -105,23 +105,26 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <motion.div
-        className={`md:hidden bg-white shadow-lg w-full absolute top-full left-0 ${
+        className={`md:hidden fixed top-[${isScrolled ? '72px' : '88px'}] left-0 right-0 bg-white/95 backdrop-blur-sm shadow-lg w-full ${
           isMobileMenuOpen ? 'block' : 'hidden'
         }`}
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: isMobileMenuOpen ? 1 : 0, y: isMobileMenuOpen ? 0 : -20 }}
-        transition={{ duration: 0.3 }}
+        animate={{ 
+          opacity: isMobileMenuOpen ? 1 : 0, 
+          y: isMobileMenuOpen ? 0 : -20,
+          transition: { duration: 0.3, ease: "easeOut" }
+        }}
       >
-        <ul className="py-4 px-6 space-y-4">
+        <ul className="py-6 px-8 space-y-6">
           {navLinks.map((link) => (
             <motion.li
               key={link.path}
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ x: 10 }}
               whileTap={{ scale: 0.95 }}
             >
               <Link
                 to={link.path}
-                className={`text-primary hover:text-secondary transition-colors duration-300 block uppercase text-sm tracking-wider ${
+                className={`text-primary hover:text-secondary transition-colors duration-300 block text-lg uppercase tracking-wider font-medium ${
                   location.pathname === link.path ? 'text-secondary' : ''
                 }`}
                 onClick={() => setIsMobileMenuOpen(false)}

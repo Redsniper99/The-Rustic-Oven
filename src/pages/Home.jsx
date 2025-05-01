@@ -13,20 +13,20 @@ const Home = () => {
           style={{ backgroundImage: "url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')" }}
         />
         <motion.div
-          className="container relative z-20 text-center text-white"
+          className="container relative z-20 text-center text-white px-4"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <h1 className="text-6xl md:text-8xl font-playfair mb-6">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-playfair mb-4 md:mb-6">
             The Rustic Oven
           </h1>
-          <p className="text-xl md:text-2xl mb-12 max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl mb-8 md:mb-12 max-w-2xl mx-auto px-4 leading-relaxed">
             Experience authentic wood-fired cuisine in the heart of Kandy. Our rustic charm and artisanal approach bring warmth to every dish.
           </p>
           <Link to="/menu">
             <motion.button
-              className="btn bg-secondary text-primary hover:bg-primary hover:text-secondary border-2 border-secondary"
+              className="btn bg-secondary text-primary hover:bg-primary hover:text-secondary border-2 border-secondary text-base sm:text-lg px-6 sm:px-8 py-3 sm:py-4"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -37,25 +37,25 @@ const Home = () => {
       </section>
 
       {/* We Are the Best Section */}
-      <section className="py-20 bg-light">
-        <div className="container">
+      <section className="py-16 md:py-20 bg-light">
+        <div className="container px-4">
           <motion.div
-            className="text-center mb-16"
+            className="text-center mb-12 md:mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl md:text-5xl font-playfair text-primary mb-6">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-playfair text-primary mb-4 md:mb-6">
               We Are the Best
             </h2>
-            <p className="text-xl text-text-light max-w-3xl mx-auto">
+            <p className="text-lg sm:text-xl text-text-light max-w-3xl mx-auto px-4">
               Experience culinary excellence with our award-winning dishes and exceptional service
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Text Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Stats Grid */}
             <motion.div
               className="space-y-8"
               initial={{ opacity: 0, x: -20 }}
@@ -63,28 +63,7 @@ const Home = () => {
               transition={{ duration: 0.8 }}
               viewport={{ once: true }}
             >
-              <div className="space-y-4">
-                <h3 className="text-3xl font-playfair text-primary">Award-Winning Excellence</h3>
-                <p className="text-text-light text-lg">
-                  Our restaurant has been recognized with numerous prestigious awards for our exceptional cuisine, outstanding service, and elegant ambiance. We take pride in maintaining the highest standards of culinary excellence.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-3xl font-playfair text-primary">Expert Culinary Team</h3>
-                <p className="text-text-light text-lg">
-                  Our team of world-class chefs brings years of experience and creativity to every dish. Using only the finest ingredients, we create memorable dining experiences that delight the senses.
-                </p>
-              </div>
-
-              <div className="space-y-4">
-                <h3 className="text-3xl font-playfair text-primary">Perfect Dining Experience</h3>
-                <p className="text-text-light text-lg">
-                  From the moment you step through our doors, you'll be immersed in an atmosphere of refined elegance. Our attentive staff ensures every detail is perfect, making your visit truly special.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
+              <div className="grid grid-cols-2 sm:grid-cols-2 gap-4 sm:gap-6">
                 {[
                   { label: "Michelin Star", value: "3" },
                   { label: "Years of Excellence", value: "15+" },
@@ -93,46 +72,21 @@ const Home = () => {
                 ].map((stat, index) => (
                   <motion.div
                     key={index}
-                    className="bg-white p-6 rounded-lg shadow-lg text-center"
+                    className="bg-white p-4 sm:p-6 rounded-lg shadow-lg text-center"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <p className="text-3xl font-playfair text-primary mb-2">{stat.value}</p>
-                    <p className="text-text-light">{stat.label}</p>
+                    <p className="text-2xl sm:text-3xl font-playfair text-primary mb-2">{stat.value}</p>
+                    <p className="text-sm sm:text-base text-text-light">{stat.label}</p>
                   </motion.div>
                 ))}
-              </div>
-            </motion.div>
-
-            {/* Featured Image */}
-            <motion.div
-              className="relative h-[600px]"
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              viewport={{ once: true }}
-            >
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent z-10" />
-              <motion.img
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80"
-                alt="Restaurant Interior"
-                className="w-full h-full object-cover transform -skew-x-6"
-                style={{ clipPath: 'polygon(10% 0, 100% 0, 90% 100%, 0 100%, 10% 0, 20% 0, 30% 0, 40% 0, 50% 0, 60% 0, 70% 0, 80% 0, 90% 0, 100% 0, 100% 10%, 100% 20%, 100% 30%, 100% 40%, 100% 50%, 100% 60%, 100% 70%, 100% 80%, 100% 90%, 100% 100%, 90% 100%, 80% 100%, 70% 100%, 60% 100%, 50% 100%, 40% 100%, 30% 100%, 20% 100%, 10% 100%, 0 100%, 0 90%, 0 80%, 0 70%, 0 60%, 0 50%, 0 40%, 0 30%, 0 20%, 0 10%, 0 0)' }}
-              />
-              <div className="absolute bottom-0 left-0 right-0 p-8 text-white z-20">
-                <h3 className="text-3xl font-playfair mb-4">Experience Excellence</h3>
-                <p className="text-white/90 text-lg">
-                  Join us for an unforgettable dining experience where every detail is crafted to perfection.
-                </p>
               </div>
             </motion.div>
           </div>
         </div>
       </section>
-
-      
 
       {/* Featured Section */}
       <section className="section bg-light w-full">
